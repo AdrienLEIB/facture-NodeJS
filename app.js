@@ -1,33 +1,37 @@
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const question = [
-	"Quel est le nom du client ?",
-	"Quelle est la prestation fournie ?",
-	"Combien d'heure facturée ?",
-	"Il y a t'il une TVA à appliquer (O/N) ?"
-];
+const product = require('./controllers/produit.controller.js'); // Imports routes for the products
+const app = express();
+var cor = require('cors');
+const mongoose = require('mongoose');
+let dev_db_url = 'mongodb://mamsleib:mams123@ds131765.mlab.com:31765/devoir';
+app.use(express.urlencoded({extented:true}));
+app.use(express.json());
+//const mongoDB = process.env.MONGODB_URI || dev_db_url;
+mongoose.connect(dev_db_url, { useNewUrlParser: true },(err) =>
+{
+	if(err){
+		console.log('database not connected');
 
-/*
-for(var i =0; i <question.length; i++){
-	ask[i];
-}
-*/
-
-// process !!
-const answer = [];
-const ask = (index) => {
-	process.stdout.write(`\n${question[index]}\n`);
-}
-
-process.stdin.on('data',(data) =>{
-	answer.push(data);
-	if(question.length === answer.length){
-		process.exit();
 	}
-	ask(answer.length);
+	else{
+		console.log('database connected');
+	}
 });
 
-process.on('exit', () => {
-	const taxe = answer[0] * answer[1] /100;
-	console.log('La taxe: ' + taxe);
-}); 
-ask(0);
+
+app.get('/', (req,res) =>
+{
+	console.log(req.body)
+	res.send("Vous etes co");
+});
+
+app.post('/api/v1/product', produit.product_create);
+app.get('/api/v1/')
+
+let port = 1234;
+
+app.listen(port, () => {
+    console.log(`Server on on port ${port}`);
+});
