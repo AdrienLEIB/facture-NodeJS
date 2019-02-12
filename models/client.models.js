@@ -13,4 +13,4 @@ let ClientSchema = new Schema({
 
 
 // Export the model
-module.exports = mongoose.model('Facture', ClientSchema);
+module.exports = mongoose.model('Facture', ClientSchema);  
