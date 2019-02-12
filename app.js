@@ -1,33 +1,53 @@
 
-const question = [
-	"Quel est le nom du client ?",
-	"Quelle est la prestation fournie ?",
-	"Combien d'heure facturée ?",
-	"Il y a t'il une TVA à appliquer (O/N) ?"
-];
+// Mongoose base de donné de NodeJ
+const express = require('express');
 
-/*
-for(var i =0; i <question.length; i++){
-	ask[i];
-}
-*/
+const app = express();
+var cor = require('cors');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const controllers = require('./controllers/facture.controllers.js');
 
-// process !!
-const answer = [];
-const ask = (index) => {
-	process.stdout.write(`\n${question[index]}\n`);
-}
+app.use(express.urlencoded({extented:true}));
+app.use(express.json());
+//app.use(cors());
+// recuperer les données dupuis un site 
+mongoose.connect('mongodb://mamsleib:mams123@ds131765.mlab.com:31765/devoir', { useNewUrlParser: true },(err) =>
+{
+	if(err){
+		console.log('database not connected');
 
-process.stdin.on('data',(data) =>{
-	answer.push(data);
-	if(question.length === answer.length){
-		process.exit();
 	}
-	ask(answer.length);
+	else{
+		console.log('database connected');
+	}
 });
 
-process.on('exit', () => {
-	const taxe = answer[0] * answer[1] /100;
-	console.log('La taxe: ' + taxe);
-}); 
-ask(0);
+
+if(){
+	
+}
+/*
+app.get('/', (req,res) =>
+{
+	res.send("Je ne parviens pas à vous identifier");
+});
+app.get('/:name', (req,res) =>
+{
+	res.send("Bonjour "+ req.params.name+ ", Bienvenu sur votre API de gestion de catalogue produit.");
+});
+
+app.post('/api/v1/produit', produitController.createProduit);
+app.get('/api/v1/produit', produitController.getProduit);
+app.get('/api/v1/produit/:id', produitController.getProduitById);
+app.get('/api/v1/produit/:id/remove', produitController.deleteProduit);
+app.put('/api/v1/produit/:id/update', produitController.updateProduit);
+app.get('/api/v1/produit/:id/calculate-taxe', produitController.taxeProduit);
+app.post('/api/v1/produit/deleteMany', produitController.deleteProduitMany);
+app.put('/api/v1/produit/updateMany', produitController.updateProduitMany);
+const port = 3000;
+app.listen(port, () =>
+{
+	console.log(`Server on on port ${port}`);
+});
+*/
