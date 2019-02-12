@@ -27,8 +27,7 @@ app.get('/', (req,res) =>
 	res.send("Vous etes co");
 });
 
-app.post('/api/v1/product', produit.product_create);
-app.get('/api/v1/')
+app.post('/api/v1/client', client.client_create);
 
 let port = 1234;
 
