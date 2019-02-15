@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> créer une facture </title>
+</head>
+</head>
+<body>
+<form action="" method="post">
+    <div>
+        <label for="name">Quel est le nom du client ?</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for="presatation">Quel est la prestation fournie ?</label>
+        <input type="text" id="presatation" name="presatation">
+    </div>
+    <div>
+        <label for="heureFacture">Combien d'heure facturée ?</label>
+        <input type="Number" id="heureFacture" name="heureFacture">
+    </div>
+    <div>
+        <label for="coutHoraire">Quel est le cout horaire ?</label>
+        <input type="Number" id="coutHoraire" name="coutHoraire">
+    </div>
+    <div>
+        <label for="TVA">Y a t'il une TVA à appliquer (O/N) ?</label>
+			<select id="choiceTVA" name="choice" id="choice">
+				<option selected="selected" value="Non">Non</option>
+				<option  value="Oui">Oui</option>
+			</select> 
+			<div hidden id="divTVA">    
+        <input  type="Number" id="TVA" name="TVA"> % </div>  
+    </div>           
+    <div class="button">
+        <button type="submit">Envoyer le message</button>
+    </div>
+</form>
+
+</body>
+<script type="text/javascript">
+
+var valueTVA = document.querySelector("#divTVA");
+var choiceTVA = document.querySelector("#choiceTVA");
+choiceTVA.addEventListener( "click", f_choiceTVA );
+function f_choiceTVA(){
+	valueTVA.setAttribute("hidden", "true");
+	if (choiceTVA.value == "Oui") {
+		valueTVA.removeAttribute('hidden');
+	}
+}
+</script>
+</html>

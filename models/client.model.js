@@ -6,11 +6,11 @@ let ClientSchema = new Schema({
 	adresse: String,
     cp: String,
     ville:  String,
-    contratref: String,
+    contactref: String,
     telephone: String,
     mail: String
 });
 
 
 // Export the model
-module.exports = mongoose.model('Facture', ClientSchema);  
+module.exports = mongoose.model('Client', ClientSchema);  

@@ -1,0 +1,21 @@
+{
+  "name": "nodejs_facture",
+  "version": "1.0.0",
+  "description": "\"Le site qui facilite la tache d'une création de facture\"",
+  "main": "mongoose.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "cores": "^0.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.2",
+    "mongose": "0.0.2-security"
+  }
+}

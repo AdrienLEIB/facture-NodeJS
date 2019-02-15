@@ -1,0 +1,16 @@
+Numéro de facture :41
+Information signalétique du client :{ _id: 5c66eec0d65d1338080968b4,
+  name: 'herve',
+  adresse: '16 bis rue pierre altmeyer',
+  cp: '95870',
+  ville: 'bezons',
+  mail: 'adad@ynov.com',
+  __v: 0 }
+Date de création :Fri Feb 15 2019 18:17:21 GMT+0100 (GMT+01:00)
+La prestation fournie :undefined
+Nombre d'heures facturés :5
+Cout Horraire : 5
+TVA :%
+Cout total : 25
+Valeur de la tva :0
+Total TTC :25

@@ -28,23 +28,26 @@ app.get('/', (req,res) =>
 {
 	res.send("Je ne parviens pas à vous identifier");
 });
-app.get('/:name', (req,res) =>
-{
-	res.send("Bonjour "+ req.params.name+ ", Bienvenu sur votre API de gestion de catalogue produit.");
+
+
+app.get('/createuser.html', function(req, res) {
+    res.sendFile( __dirname + '/createuser.html');
 });
 
-app.post('/api/v1/client', clientController.createClient);
-/*
-app.get('/api/v1/produit', produitController.getProduit);
-app.get('/api/v1/produit/:id', produitController.getProduitById);
-app.get('/api/v1/produit/:id/remove', produitController.deleteProduit);
-app.put('/api/v1/produit/:id/update', produitController.updateProduit);
-app.get('/api/v1/produit/:id/calculate-taxe', produitController.taxeProduit);
-app.post('/api/v1/produit/deleteMany', produitController.deleteProduitMany);
-app.put('/api/v1/produit/updateMany', produitController.updateProduitMany);
-*/
+app.post('/createuser.html', clientController.createClient);
+app.get('/clients', clientController.getClient);
+
+
+app.get('/createfacture.html', function(req, res) {
+    res.sendFile( __dirname + '/createfacture.html');
+});
+app.post('/createfacture.html', clientController.createFacture);
+app.get('/sales', clientController.getSales);
+app.get('/deleteLogSales', clientController.deleteLog);
+
 const port = 3000;
 app.listen(port, () =>
 {
 	console.log(`Server on on port ${port}`);
 });
+
