@@ -1,0 +1,10 @@
+Numéro de facture :3
+Information signalétique du client :null
+Date de création :Sun Feb 17 2019 23:18:58 GMT+0100 (GMT+01:00)
+La prestation fournie :undefined
+Nombre d'heures facturés :20
+Cout Horraire : 100
+TVA :10%
+Cout total : 2000
+Valeur de la tva :200
+Total TTC :2200

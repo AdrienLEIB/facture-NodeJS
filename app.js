@@ -8,11 +8,13 @@ var cor = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const clientController = require('./controllers/client.controller.js');
+const factureController = require('./controllers/facture.controller.js');
+const totalTTCController = require('./controllers/totalTTC.controller.js');
+const commentaireController = require('./controllers/commentaire.controller.js');
 
 app.use(express.urlencoded({extented:true}));
 app.use(express.json());
-//app.use(cors());
-// recuperer les données dupuis un site 
+
 mongoose.connect('mongodb://mamsleib:mams123@ds131765.mlab.com:31765/devoir', { useNewUrlParser: true },(err) =>
 {
 	if(err){
@@ -26,37 +28,38 @@ mongoose.connect('mongodb://mamsleib:mams123@ds131765.mlab.com:31765/devoir', { 
 
 app.get('/', (req,res) =>
 {
-	res.send(" Faire un html qu résume chaque app");
+	res.sendFile( __dirname + '/html/index.html');
 });
 
-
-app.get('/createuser.html', function(req, res) {
-    res.sendFile( __dirname + '/createuser.html');
-});
-
-app.post('/createuser.html', clientController.createClient);
+// Script client
 app.get('/clients', clientController.getClient);
-
-
+app.get('/createclient.html', function(req, res) {
+    res.sendFile( __dirname + '/html/createclient.html');
+});
+app.post('/createclient.html', clientController.createClient);
+app.get('/client/:id', clientController.getClientById);
+app.get('/client/:id/remove', clientController.deleteClient);
+app.put('/client/:id/update', clientController.updateClient);
+app.post('/clientdeleteMany', clientController.deleteClientMany);
+app.put('/clientupdateMany', clientController.updateClientMany);
+// Script facture
 app.get('/createfacture.html', function(req, res) {
-    res.sendFile( __dirname + '/createfacture.html');
+    res.sendFile( __dirname + '/html/createfacture.html');
 });
-app.post('/createfacture.html', clientController.createFacture);
-app.get('/sales', clientController.getSales);
-app.get('/deleteLogSales', clientController.deleteLog);
-
+app.post('/createfacture.html', factureController.createFacture);
+app.get('/sales', factureController.getSales);
+app.get('/deleteLogSales', factureController.deleteLog);
+// Script commentaire
 app.get('/createcommentaire.html', function(req, res) {
-    res.sendFile( __dirname + '/createcommentaire.html');
+    res.sendFile( __dirname + '/html/createcommentaire.html');
 });
-app.post('/createcommentaire.html', clientController.createCommentaire);
-app.get('/deleteCommentaire/:name', clientController.deleteCommentaire);
-app.get('/afficherCommentaire/:name', clientController.afficherCommentaire);
+app.post('/createcommentaire.html', commentaireController.createCommentaire);
+app.get('/deleteCommentaire/:name', commentaireController.deleteCommentaire);
+app.get('/afficherCommentaire/:name', commentaireController.afficherCommentaire);
+app.post('/deleteSales', commentaireController.deleteSales);
 
 
-app.post('/deleteSales', clientController.deleteSales);
-
-
-app.get('/totalTTC', clientController.totalTTC);
+app.get('/totalTTC', totalTTCController.totalTTC);
 
 
 const port = 3000;
