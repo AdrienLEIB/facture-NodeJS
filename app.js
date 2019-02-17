@@ -42,6 +42,7 @@ app.get('/client/:id/remove', clientController.deleteClient);
 app.put('/client/:id/update', clientController.updateClient);
 app.post('/clientdeleteMany', clientController.deleteClientMany);
 app.put('/clientupdateMany', clientController.updateClientMany);
+
 // Script facture
 app.get('/createfacture.html', function(req, res) {
     res.sendFile( __dirname + '/html/createfacture.html');
@@ -49,6 +50,8 @@ app.get('/createfacture.html', function(req, res) {
 app.post('/createfacture.html', factureController.createFacture);
 app.get('/sales', factureController.getSales);
 app.get('/deleteLogSales', factureController.deleteLog);
+/*app.post('/deleteSales', commentaireController.deleteSales);*/
+
 // Script commentaire
 app.get('/createcommentaire.html', function(req, res) {
     res.sendFile( __dirname + '/html/createcommentaire.html');
@@ -56,9 +59,8 @@ app.get('/createcommentaire.html', function(req, res) {
 app.post('/createcommentaire.html', commentaireController.createCommentaire);
 app.get('/deleteCommentaire/:name', commentaireController.deleteCommentaire);
 app.get('/afficherCommentaire/:name', commentaireController.afficherCommentaire);
-app.post('/deleteSales', commentaireController.deleteSales);
 
-
+//totalTTC
 app.get('/totalTTC', totalTTCController.totalTTC);
 
 
