@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	 Commentaire </title>
+</head>
+<body>
+<body>
+<form action="" method="post">
+    <div>
+        <label for="name">Quel est le nom du client ?</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for="note">Ecrivez une note :</label>
+        <input type="text" id="note" name="note">
+    </div>
+    <div>
+        <label for="note2">Avez-vous une autre note à insérer  ?</label>
+			<select id="choicenote2" name="choiceREF2">
+				<option selected="selected" value="Non">Non</option>
+				<option  value="Oui">Oui</option>
+			</select> 
+			<div hidden id="divnote2"> 
+            Ecrivez votre seconde note :  
+                <input  type="text" id="note2" name="note2"></div>  
+            </div>           
+    <div class="button">
+        <button type="submit">Créer le commentaire</button>
+    </div>
+</form>
+
+</body>
+<script type="text/javascript">
+
+var valueNote2 = document.querySelector("#divnote2");
+var choiceNote2 = document.querySelector("#choicenote2");
+choiceNote2.addEventListener( "click", f_choiceNote2 );
+function f_choiceNote2(){
+    valueNote2.setAttribute("hidden", "true");
+    if (choiceNote2.value == "Oui") {
+        valueNote2.removeAttribute('hidden');
+    }
+}
+</script>
+</html>

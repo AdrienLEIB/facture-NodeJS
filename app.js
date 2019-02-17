@@ -26,7 +26,7 @@ mongoose.connect('mongodb://mamsleib:mams123@ds131765.mlab.com:31765/devoir', { 
 
 app.get('/', (req,res) =>
 {
-	res.send("Je ne parviens pas à vous identifier");
+	res.send(" Faire un html qu résume chaque app");
 });
 
 
@@ -44,6 +44,20 @@ app.get('/createfacture.html', function(req, res) {
 app.post('/createfacture.html', clientController.createFacture);
 app.get('/sales', clientController.getSales);
 app.get('/deleteLogSales', clientController.deleteLog);
+
+app.get('/createcommentaire.html', function(req, res) {
+    res.sendFile( __dirname + '/createcommentaire.html');
+});
+app.post('/createcommentaire.html', clientController.createCommentaire);
+app.get('/deleteCommentaire/:name', clientController.deleteCommentaire);
+app.get('/afficherCommentaire/:name', clientController.afficherCommentaire);
+
+
+app.post('/deleteSales', clientController.deleteSales);
+
+
+app.get('/totalTTC', clientController.totalTTC);
+
 
 const port = 3000;
 app.listen(port, () =>
